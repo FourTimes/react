@@ -1,4 +1,4 @@
-name: Test & Deploy
+name: React app build and deploy
 on:
   push:
     branches:
@@ -9,6 +9,8 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+        region: "us-east-1"
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -39,8 +41,8 @@ jobs:
           aws_secret_key: ${{secrets.AWS_SECRET_ACCESS_REACT_KEY}}
           application_name: "demo"
           environment_name: "Demo-env"
-          region: "us-east-1"
+          region: ${{ matrix.region }}
           version_label: "react-demo-new-${{ steps.format-time.outputs.replaced }}"
           deployment_package: deploy.zip
       - name: Deployed!
-        run: echo App deployed to ELB
+        run: echo React app deployment completed!!!!
