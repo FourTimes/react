@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          CI/CD React
+          demo CI/CD React
         </a>
       </header>
     </div>
