@@ -17,6 +17,7 @@ jobs:
         uses: montudor/action-zip@v0.1.0
         with:
           args: zip -qq -r ../welcome.zip index.js
+        env:
           working-directory: ./src
       - run: ls -la
       # - name: Use Node.js ${{ matrix.node-version }}
