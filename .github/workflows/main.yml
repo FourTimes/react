@@ -9,10 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - run: |
-          ls -la
-        env:
-          working-directory: src
+      - run: ls -la
+        working-directory: ./src
       
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v1
