@@ -13,12 +13,8 @@ jobs:
         working-directory: ./src
       - run: ls -la
         working-directory: ./public
-      - name: zip
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r ../welcome.zip *
-        env:
-          working-directory: ./src
+      - run: zip -qq -r ../welcome.zip *
+        working-directory: ./src
       - run: ls -la
       # - name: Use Node.js ${{ matrix.node-version }}
       #   uses: actions/setup-node@v1
