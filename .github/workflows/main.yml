@@ -15,7 +15,7 @@ jobs:
     - name: Publish app for deploy
       run: echo "Build"
   staging:
-#     needs: SIT
+    needs: build
     name: TEST
     if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
