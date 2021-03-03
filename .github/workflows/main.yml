@@ -9,7 +9,6 @@ on:
 jobs:
   sit:
     name: system integration environment
-    if: github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,10 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Publish app for deploy
-      run: echo "Build"
+      run: echo $github
   test:
     name: test environment
-    if: github.event.pull_request.base.ref == 'test'
+    if: github.event.pull_request.base == 'test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
