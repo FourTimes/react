@@ -31,7 +31,7 @@ jobs:
   deploy:
     needs: test
     name: production environment
-    if: github.event.pull_request.base.ref == 'main'
+    if: github.event.pull_request.base.ref == 'test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
