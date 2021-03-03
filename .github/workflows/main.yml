@@ -9,7 +9,6 @@ on:
 jobs:
   sit:
     name: system integration environment
-    if: github.ref == 'test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
