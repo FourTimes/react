@@ -3,9 +3,7 @@ on:
   push:
     branches: [ '*' ]
   pull_request:
-    branches: 
-      - main
-      - test
+    types: [closed]
 jobs:
   sit:
     name: system integration environment
