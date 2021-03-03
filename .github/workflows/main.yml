@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 jobs:
   sit:
-    name: SIT
-    if: github.ref == 'refs/heads/test'
+    name: system integration environment
+    if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,7 +18,7 @@ jobs:
       run: echo "Build"
   test:
     needs: sit
-    name: TEST
+    name: test environment
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     strategy:
@@ -30,8 +30,8 @@ jobs:
       run: echo "Build"
   deploy:
     needs: test
-    name: Deploy to production
-    if: github.ref == 'refs/heads/main'
+    name: production environment
+    if: github.event.pull_request.base.ref == 'master'
     runs-on: ubuntu-latest
     strategy:
       matrix:
