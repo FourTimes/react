@@ -7,7 +7,7 @@ on:
 jobs:
   sit:
     name: SIT
-    if: github.ref == 'refs/heads/development'
+    if: github.ref == 'refs/heads/test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
