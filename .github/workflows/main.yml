@@ -17,9 +17,8 @@ jobs:
     - name: Publish app for deploy
       run: echo "Build"
   test:
-    needs: sit
     name: test environment
-    if: github.ref == 'refs/heads/main'
+    if: github.event.pull_request.base.ref == 'test'
     runs-on: ubuntu-latest
     strategy:
       matrix:
