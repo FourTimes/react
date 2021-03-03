@@ -1,4 +1,3 @@
-
 name: React application build and deploy
 on:
   push:
@@ -6,26 +5,38 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  build:
+  sit:
     name: SIT
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
     - uses: actions/checkout@v2
     - name: Publish app for deploy
       run: echo "Build"
-  staging:
-    needs: build
+  test:
+    needs: sit
     name: TEST
-    if: github.ref == 'refs/heads/development'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
+    - uses: actions/checkout@v2
     - name: Publish app for deploy
       run: echo "Build"
   deploy:
-    needs: staging
+    needs: test
     name: Deploy to production
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
     steps:
+    - uses: actions/checkout@v2
     - name: Publish app for deploy
       run: echo "staging"
