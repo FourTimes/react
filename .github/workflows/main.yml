@@ -7,6 +7,7 @@ on:
 jobs:
   sit:
     name: system integration environment
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == false
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Publish app for deploy
-      run: echo $github
+      run: echo "sit env"
   test:
     name: test environment
     if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
