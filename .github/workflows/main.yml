@@ -1,20 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 name: React application build and deploy
 on:
   push:
@@ -23,17 +7,17 @@ on:
     branches: [ main ]
 jobs:
   build:
-    name: Build
-    environment:
-      name: dev
+    name: SIT
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Publish app for deploy
       run: echo "Build"
   staging:
-    needs: build
-    name: Deploy to staging
+#     needs: SIT
+    name: TEST
+    if: github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
     steps:
     - name: Publish app for deploy
